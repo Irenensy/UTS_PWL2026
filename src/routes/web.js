@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { home } from "../controllers/homeController";
 import { 
   index, 
   create, 
@@ -10,7 +11,7 @@ import {
 
 const router = new Hono();
 
-router.get("/", (c) => c.redirect("/mahasiswa"));
+router.get("/", home);
 router.get("/mahasiswa", index);
 router.get("/mahasiswa/create", create);
 router.post("/mahasiswa", store);

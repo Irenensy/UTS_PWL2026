@@ -1,15 +1,38 @@
-<div class="text-center py-10">
-    <h2 class="text-3xl font-bold text-gray-800 mb-4"><%= title %></h2>
-    <p class="text-lg text-gray-600 mb-8"><%= message %></p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-        <a href="/mahasiswa" class="p-6 bg-blue-50 border border-blue-200 rounded-xl hover:bg-blue-100 transition">
-            <h3 class="text-xl font-semibold text-blue-700">Lihat Data</h3>
-            <p class="text-sm text-gray-500">Manajemen data mahasiswa (CRUD)</p>
-        </a>
-        <a href="/mahasiswa/create" class="p-6 bg-green-50 border border-green-200 rounded-xl hover:bg-green-100 transition">
-            <h3 class="text-xl font-semibold text-green-700">Tambah Baru</h3>
-            <p class="text-sm text-gray-500">Input mahasiswa ke database SQLite</p>
-        </a>
-    </div>
+<!-- STATS CARDS -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+  <div class="bg-white p-6 rounded-xl shadow">
+    <p class="text-sm text-gray-500">Total Mahasiswa</p>
+    <p class="text-3xl font-bold text-blue-600"><%= totalMahasiswa %></p>
+  </div>
+  <div class="bg-white p-6 rounded-xl shadow">
+    <p class="text-sm text-gray-500">Total Dosen</p>
+    <p class="text-3xl font-bold text-green-600">35</p>
+  </div>
+  <div class="bg-white p-6 rounded-xl shadow">
+    <p class="text-sm text-gray-500">Total Matkul</p>
+    <p class="text-3xl font-bold text-purple-600">50</p>
+  </div>
+</div>
+
+<!-- TABLE PREVIEW -->
+<div class="bg-white p-6 rounded-xl shadow">
+  <h2 class="text-lg font-bold mb-4">Data Mahasiswa</h2>
+  <table class="w-full text-sm text-left">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="p-3">No</th>
+        <th class="p-3">Nama</th>
+        <th class="p-3">NIM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% mahasiswa.forEach((m, i) => { %>
+      <tr class="border-t">
+        <td class="p-3"><%= i + 1 %></td>
+        <td class="p-3"><%= m.nama %></td>
+        <td class="p-3"><%= m.nim %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </div>
