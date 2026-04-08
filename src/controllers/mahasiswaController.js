@@ -3,7 +3,7 @@ import * as model from "../models/mahasiswaModel";
 
 // 1. LIST (Menampilkan semua data)
 export const index = async (c) => {
-  const data = await model.getAll(); // Tambahkan await
+  const data = await model.getAll(); 
   const success = c.req.query("success");
   const error = c.req.query("error");
   

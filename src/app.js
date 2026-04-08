@@ -1,18 +1,22 @@
 import { Hono } from "hono";
 import { serveStatic } from "hono/bun";
-import webRoutes from "./routes/web";
+import webRouter from "./routes/web";
 
 const app = new Hono();
 
-// Melayani file statis (CSS)
-app.use("/public/*", serveStatic({ root: "./src" }));
+app.use("*", async (c, next) => {
+  console.log(`Log: ${c.req.method} ${c.req.url}`);
+  await next();
+});
 
-// Menggunakan routes
-app.route("/", webRoutes);
+app.use("/public/*", serveStatic({ root: "./" }));
 
-console.log("Server running at http://localhost:3000");
+app.route("/", webRouter);
 
 export default {
   port: 3000,
+  hostname: "0.0.0.0",
   fetch: app.fetch,
 };
+
+console.log("🚀 Server jalan di http://localhost:3000");
